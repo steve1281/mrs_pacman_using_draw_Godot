@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://clw2dr85x7ham"]
+
+[ext_resource type="PackedScene" uid="uid://bmqqalqu3s5a6" path="res://MsPacman.tscn" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://be3flmf6pmntn" path="res://Main.cs" id="1_uu6xs"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_glv2v"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Main" type="Node" node_paths=PackedStringArray("MsPacmanPixilated")]
+script = ExtResource("1_uu6xs")
+MsPacmanPixilated = NodePath("MsPacManPixilated")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03529412, 0.5411765, 0.7411765, 1)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(64, 64)
+
+[node name="MsPacman" parent="SubViewport" instance=ExtResource("1_glv2v")]
+position = Vector2(32.5, 40)
+scale = Vector2(0.1, 0.1)
+
+[node name="MsPacManPixilated" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(594, 335)
+scale = Vector2(6, 6)
+texture = SubResource("ViewportTexture_glv2v")
